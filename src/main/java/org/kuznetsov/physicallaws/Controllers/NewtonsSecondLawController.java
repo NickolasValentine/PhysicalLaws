@@ -1,12 +1,8 @@
 package org.kuznetsov.physicallaws.Controllers;
 
 import org.kuznetsov.physicallaws.Interfaces.IObserver;
-import org.kuznetsov.physicallaws.Interfaces.ISubscription;
 import org.kuznetsov.physicallaws.Models.PhysicalModel;
 import org.kuznetsov.physicallaws.Views.PhysicalLawsView;
-
-import java.util.ArrayList;
-import java.util.List;
 
 public class NewtonsSecondLawController extends Thread implements IObserver {
 
