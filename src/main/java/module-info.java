@@ -1,16 +1,16 @@
 module org.kuznetsov.physicallaws {
+    // Экспортируем пакеты, чтобы они были доступны JavaFX и другим модулям
+    exports org.kuznetsov.physicallaws.App;
+    exports org.kuznetsov.physicallaws.Controllers;
+    exports org.kuznetsov.physicallaws.Models;
+    exports org.kuznetsov.physicallaws.Views;
+    exports org.kuznetsov.physicallaws.Interfaces;
+
+    // Требуемые JavaFX модули
     requires javafx.controls;
     requires javafx.fxml;
 
-
-    opens org.kuznetsov.physicallaws.App  to javafx.fxml;
-    exports org.kuznetsov.physicallaws.App;
-    opens org.kuznetsov.physicallaws.Controllers  to javafx.fxml;
-    exports org.kuznetsov.physicallaws.Controllers;
-    opens org.kuznetsov.physicallaws.Interfaces  to javafx.fxml;
-    exports org.kuznetsov.physicallaws.Interfaces;
-    opens org.kuznetsov.physicallaws.Models  to javafx.fxml;
-    exports org.kuznetsov.physicallaws.Models;
-    opens org.kuznetsov.physicallaws.Views  to javafx.fxml;
-    exports org.kuznetsov.physicallaws.Views;
+    // Открываем для рефлексии (нужно для FXML)
+    opens org.kuznetsov.physicallaws.App to javafx.fxml;
+    opens org.kuznetsov.physicallaws.Controllers to javafx.fxml;
 }
