@@ -118,11 +118,6 @@ public class PhysicalLawsView extends VBox {
     public ObservableValue<String> timeTextProperty() { return timeField.textProperty(); }
     public ObservableValue<String> speedTextProperty() { return speedField.textProperty(); }
 
-    // Вспомогательные методы
-    private boolean isValidDouble(String text) {
-        return text.matches("-?\\d+(\\.\\d+)?");
-    }
-
     public void setNewtonsSecondLawText(double newtonsSecondLaw) {
         newtonsSecondLawText.setText(String.valueOf(newtonsSecondLaw));
     }
