@@ -14,18 +14,35 @@ public class PhysicalModel implements ISubscription {
     private double weight;
     private double acceleration;
     private double initialSpeed;
-    private int time;
+    private double time;
     private double speed;
     /////////////////////////////////////////////////////////////////
     private double newtonsSecondLaw;
     private double kinematicEquation;
     private double kineticEnergy;
 
-    private Timeline updateOut;
-
     public PhysicalModel() {
         observers = new ArrayList<>();
-        calculation();
+    }
+
+    public double getWeight() {
+        return weight;
+    }
+
+    public double getAcceleration() {
+        return acceleration;
+    }
+
+    public double getInitialSpeed() {
+        return initialSpeed;
+    }
+
+    public double getTime() {
+        return time;
+    }
+
+    public double getSpeed() {
+        return speed;
     }
 
     public void setWeight(double weight) { this.weight = weight; }
@@ -62,13 +79,9 @@ public class PhysicalModel implements ISubscription {
     }
 
     public void calculation() {
-        updateOut = new Timeline(new KeyFrame(Duration.millis(50), event -> {
-            setNewtonsSecondLaw(weight * acceleration);
-            setKinematicEquation(initialSpeed + acceleration * time);
-            setKineticEnergy((weight * Math.pow(speed, 2)) / 2);
-            notifyObserver();
-        }));
-        updateOut.setCycleCount(Timeline.INDEFINITE);
-        updateOut.play();
+        setNewtonsSecondLaw(weight * acceleration);
+        setKinematicEquation(initialSpeed + acceleration * time);
+        setKineticEnergy((weight * Math.pow(speed, 2)) / 2);
+        notifyObserver();
     }
 }

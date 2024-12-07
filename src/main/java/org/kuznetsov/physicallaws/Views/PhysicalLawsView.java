@@ -1,5 +1,7 @@
 package org.kuznetsov.physicallaws.Views;
 
+import javafx.beans.value.ChangeListener;
+import javafx.beans.value.ObservableValue;
 import javafx.geometry.Insets;
 import javafx.geometry.Pos;
 import javafx.scene.control.Button;
@@ -74,7 +76,6 @@ public class PhysicalLawsView extends VBox {
         label.setFont(Font.font("Arial", FontWeight.MEDIUM, 14));
         textField.setPrefWidth(200);
         textField.setStyle("-fx-background-color: #ffffff; -fx-border-color: #bdc3c7; -fx-border-radius: 5; -fx-padding: 5;");
-
         return new VBox(5, label, textField);
     }
 
@@ -110,48 +111,24 @@ public class PhysicalLawsView extends VBox {
     }
 
     // Методы для получения данных
-    public double getWeight() {
-        String text = weightField.getText().trim();
-        return isValidDouble(text) ? Double.parseDouble(text) : 0;
-    }
 
-    public double getAcceleration() {
-        String text = accelerationField.getText().trim();
-        return isValidDouble(text) ? Double.parseDouble(text) : 0;
-    }
-
-    public double getInitialSpeed() {
-        String text = initialSpeedField.getText().trim();
-        return isValidDouble(text) ? Double.parseDouble(text) : 0;
-    }
-
-    public int getTime() {
-        String text = timeField.getText().trim();
-        return isValidInteger(text) ? Integer.parseInt(text) : 0;
-    }
-
-    public double getSpeed() {
-        String text = speedField.getText().trim();
-        return isValidDouble(text) ? Double.parseDouble(text) : 0;
-    }
+    public ObservableValue<String> weightTextProperty() { return weightField.textProperty(); }
+    public ObservableValue<String> accelerationTextProperty() { return accelerationField.textProperty(); }
+    public ObservableValue<String> initialSpeedTextProperty() { return initialSpeedField.textProperty(); }
+    public ObservableValue<String> timeTextProperty() { return timeField.textProperty(); }
+    public ObservableValue<String> speedTextProperty() { return speedField.textProperty(); }
 
     // Вспомогательные методы
     private boolean isValidDouble(String text) {
         return text.matches("-?\\d+(\\.\\d+)?");
     }
 
-    private boolean isValidInteger(String text) {
-        return text.matches("-?\\d+");
-    }
-
     public void setNewtonsSecondLawText(double newtonsSecondLaw) {
         newtonsSecondLawText.setText(String.valueOf(newtonsSecondLaw));
     }
-
     public void setKinematicEquationText(double kinematicEquation) {
         kinematicEquationText.setText(String.valueOf(kinematicEquation));
     }
-
     public void setKineticEnergyText(double kineticEnergy) {
         kineticEnergyText.setText(String.valueOf(kineticEnergy));
     }
